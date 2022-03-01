@@ -2,30 +2,20 @@
   "products": [
     {
       "categoryId": 1,
-      "name": "Kaşağı",
-      "description": "Ömer SEYFETTİN2",
-      "quantity": "1234",
+      "name": "Nutuk",
+      "description": "M.Kemal ATATÜRK",
+      "quantity": "120",
       "id": 1
-    },
-    {
-      "categoryId": 1,
-      "name": "Kaşağı",
-      "description": "Ömer SEYFETTİN",
-      "quantity": "1231",
-      "id": 2
-    },
-    {
-      "categoryId": 1,
-      "name": "sdfsdf",
-      "description": "sdfsd",
-      "quantity": "12312",
-      "id": 3
     }
   ],
   "categories": [
     {
       "categoryName": "Araştırma-Tarih",
       "id": 1
+    },
+    {
+      "categoryName": "Çocuk",
+      "id": 2
     }
   ]
 }

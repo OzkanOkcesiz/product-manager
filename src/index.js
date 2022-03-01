@@ -163,7 +163,7 @@ function updateProduct() {
         }
     
         else {
-        console.log('selectedItem',selectedData)
+
             
             request.putProducts(selectedData.id,{
                 categoryId: productCategoryValue,
@@ -242,20 +242,29 @@ function addCategory(e) {
 function updateOrDelete(e) {
 
     if (e.target.id === "delete-product") {
+        let newObj = {}
+
+        Array.from(e.target.parentElement.parentElement.children).forEach((e) => {
+            const nameAttr = e.getAttribute("name");
+            const textvalue = e.textContent;
+            if(!!nameAttr){
+                newObj[nameAttr] = textvalue;
+            }        
+        })
+        localStorage.setItem('selectedItem',JSON.stringify(newObj));
 
         deleteProduct(e.target);
     }
 
     else if(e.target.id === "update-product") {
         let newObj = {}
-        console.log('parent',(e.target.parentElement.parentElement.children))
+        
         Array.from(e.target.parentElement.parentElement.children).forEach((e) => {
             const nameAttr = e.getAttribute("name");
             const textvalue = e.textContent;
             if(!!nameAttr){
                 newObj[nameAttr] = textvalue;
-            }
-           
+            }    
         })
         localStorage.setItem('selectedItem',JSON.stringify(newObj));
         updateProductController(e.target.parentElement.parentElement);
@@ -269,31 +278,16 @@ function updateOrDelete(e) {
 
 
 function deleteProduct(targetProduct){
-    
-    const deleteProductName = targetProduct.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
 
-    const deleteProductDescription= targetProduct.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    const selectedData = JSON.parse(localStorage.getItem('selectedItem'))
 
-    request.getProducts()
-    .then(products => {
 
-        products.forEach(products => {
-            
-            if(products.categoryId == categoriesFormSelect.value) {
-
-                if(products.name == deleteProductName && products.description == deleteProductDescription) {
-
-                    request.deleteProducts(products.id)
-                    .then(message => {
-                        ui.deleteProductFromUI(targetProduct.parentElement.parentElement);
-                        console.log(message);
-                    })
-                    .catch(err => console.log(err));
-                }
-                
-            }
-        });
-    });
+    request.deleteProducts(selectedData.id)
+    .then(message => {
+        ui.deleteProductFromUI(targetProduct.parentElement.parentElement);
+        console.log(message);
+    })
+    .catch(err => console.log(err));
 }
 
 

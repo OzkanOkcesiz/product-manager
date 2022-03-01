@@ -230,8 +230,7 @@ export class UI {
 
 
     addProductInfo(targetProduct) {
-        console.log('target',targetProduct)
-        console.log('product',this.selectedProductId)
+
         const children = targetProduct.children;
         this.nameInput.value = children[0].textContent;
         this.descriptionInput.value = children[1].textContent;
