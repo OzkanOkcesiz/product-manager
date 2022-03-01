@@ -19,6 +19,7 @@ export class UI {
         this.categoryUpdateBtn = document.getElementById("c-update-btn");
         this.categoryDeleteBtn = document.getElementById("c-delete-btn");
         this.categortyBtnBox = document.getElementById("category-btn-box");
+        this.selectedProductId = document.querySelector(".id")
 
     }
 
@@ -58,9 +59,10 @@ export class UI {
 
                 result += `
                 <tr>                           
-                <td>${product.name}</td>
-                <td>${product.description}</td>
-                <td>${product.quantity}</td>
+                <td name="name">${product.name}</td>
+                <td name="description">${product.description}</td>
+                <td name="quantity">${product.quantity}</td>
+                <td style="display:none" class="id" name="id">${product.id}</td>
                 <td><a href="#" id = "update-product" class= "btn btn-danger">Güncelle</a></td> 
                 <td> <a href="#" id = "delete-product" class= "btn btn-danger">Sil</a></td>
                 </tr>
@@ -92,9 +94,10 @@ export class UI {
             this.productsList.innerHTML += 
             `
            <tr>                           
-           <td>${product.name}</td>
-           <td>${product.description}</td>
+           <td name="name">${product.name}</td>
+           <td  name="description">${product.description}</td>
            <td>${product.quantity}</td>
+           <td style="display:none">${product.id}</td>
            <td><a href="#" id = "update-product" class= "btn btn-danger">Güncelle</a></td> 
            <td> <a href="#" id = "delete-product" class= "btn btn-danger">Sil</a></td>
            </tr>
@@ -192,6 +195,7 @@ export class UI {
                 <td>${product.name}</td>
                 <td>${product.description}</td>
                 <td>${product.quantity}</td>
+                <td style="display:none">${product.id}</td>
                 <td><a href="#" id = "update-product" class= "btn btn-danger">Güncelle</a></td> 
                 <td> <a href="#" id = "delete-product" class= "btn btn-danger">Sil</a></td>
                 </tr>
@@ -226,12 +230,13 @@ export class UI {
 
 
     addProductInfo(targetProduct) {
-
+        console.log('target',targetProduct)
+        console.log('product',this.selectedProductId)
         const children = targetProduct.children;
-
         this.nameInput.value = children[0].textContent;
         this.descriptionInput.value = children[1].textContent;
         this.quantityInput.value = children[2].textContent;
+        
 
     }
 

@@ -88,8 +88,6 @@ function addProduct(e) {
     const productName = nameInput.value.trim();
     const productDescription = descriptionInput.value.trim();
     const productQuantity = quantityInput.value.trim();
-    
-
     if (productCategoryValue == 0 || productName === "" || productDescription === "" || productQuantity === "") {
         alert("Lütfen Tüm Alanları Doldurun");
     }
@@ -158,33 +156,16 @@ function updateProduct() {
     const productDescription = descriptionInput.value.trim();
     const productQuantity = quantityInput.value.trim();
 
-
-    let id = "";
-
-    request.getProducts()
-    .then(products => {
-
-        console.log(products);
-
-        products.forEach(product => {
-            
-            if (nameInput.value.trim() == product.name && descriptionInput.value.trim() == product.description) {
-
-                id = product.id;
-
-            }
-
-        })
-
+    const selectedData = JSON.parse(localStorage.getItem('selectedItem'))
         
         if (productCategoryValue == 0 || productName === "" || productDescription === "" || productQuantity === "") {
             alert("Lütfen Tüm Alanları Doldurun");
         }
     
         else {
+        console.log('selectedItem',selectedData)
             
-            
-            request.putProducts(id,{
+            request.putProducts(selectedData.id,{
                 categoryId: productCategoryValue,
                 name: productName,
                 description: productDescription,
@@ -203,8 +184,6 @@ function updateProduct() {
             .catch(err => console.log(err));
         }
         
-    })
-
 
     ui.clearInputs();
 }
@@ -268,8 +247,20 @@ function updateOrDelete(e) {
     }
 
     else if(e.target.id === "update-product") {
-
+        let newObj = {}
+        console.log('parent',(e.target.parentElement.parentElement.children))
+        Array.from(e.target.parentElement.parentElement.children).forEach((e) => {
+            const nameAttr = e.getAttribute("name");
+            const textvalue = e.textContent;
+            if(!!nameAttr){
+                newObj[nameAttr] = textvalue;
+            }
+           
+        })
+        localStorage.setItem('selectedItem',JSON.stringify(newObj));
         updateProductController(e.target.parentElement.parentElement);
+
+        
 
         
     }
@@ -353,8 +344,6 @@ function deleteCategory() {
     request.getProducts(products)
     .then(products => {
         ui.addProductsUI(products);
-
-        
     })
 }
 
