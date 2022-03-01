@@ -1,0 +1,152 @@
+.container{
+
+    .card {
+
+        .card-header {
+            text-align: center;
+            background: #212529;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .card-body {
+
+            .form{
+                display: grid;
+                grid-template-rows: 2fr .5fr;
+
+                .form-row {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-columns: 1fr 1fr;
+                    grid-column-gap: 15px;
+
+                    @media screen and (max-width: 425px) {
+
+                        grid-template-columns: 1fr;
+                        grid-gap: 10px;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .btn-box {
+                    display: flex;
+                    height: max-content;
+                    margin-top: 10px;
+
+                    #update {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+        .card-body-2{
+            display: grid;
+            grid-template-columns: 1fr;
+
+            @media screen and (min-width: 992px) {
+                grid-template-columns: 1fr 3fr;
+            }
+
+
+            .categories {
+                padding: 16px 16px 16px 0;
+
+                @media screen and (max-width: 992px) {
+
+                    padding: 16px 0;
+                }
+                
+
+                #categories-header {
+                    text-align: center;
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                    font-weight: 500;
+                    line-height: 1.2;
+                }
+
+                .category-form {
+
+                    .categories-select{
+                        margin-bottom: 10px;
+
+                        #category-ınput {
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .form-btn-box{
+                        display: flex;
+                        justify-content: start;
+    
+                        .btn-category{
+                            margin-right: 5px;
+                            font-size: 14px;
+
+                            #category-cancel {
+                                font-size: 14px;
+                            }
+                        }
+    
+                        @media screen and (min-width: 992px) and (max-width: 1200px) {
+                            display: flex;
+                            flex-direction: column;
+    
+                            .btn-category{
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+
+                .category-btn-box {
+                    display: flex;
+                    justify-content: start;
+
+                    .btn-category{
+                        margin-right: 5px;
+                        font-size: 14px;
+                        box-shadow: none !important;
+                    }
+
+                    @media screen and (min-width: 992px) and (max-width: 1200px) {
+                        display: flex;
+                        flex-direction: column;
+
+                        .btn-category{
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+
+            .products {
+                padding: 16px 0 16px 16px;
+
+                @media screen and (max-width: 992px) {
+
+                    padding: 16px 0;
+                }
+
+                .product-search {
+                    display: flex;
+                    justify-content: end;
+                    margin-bottom: 10px;
+
+                    .search{
+                        width: 100%;
+                        
+                        @media screen and (min-width: 768px) {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}

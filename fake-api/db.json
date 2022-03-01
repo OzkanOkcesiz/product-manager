@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "categoryId": 1,
+      "name": "Murat",
+      "description": "Halil İNANCIK",
+      "quantity": "123",
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "categoryName": "Araştırma-Tarih",
+      "id": 1
+    }
+  ]
+}
