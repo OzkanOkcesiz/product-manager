@@ -353,6 +353,8 @@ function deleteCategory() {
     request.getProducts(products)
     .then(products => {
         ui.addProductsUI(products);
+
+        
     })
 }
 
